@@ -142,42 +142,7 @@ Defaults to **Safe** and is a plain pass-through to each site's own
 rating tag - the same filter that site's own search box uses. Nothing
 here bypasses a site's own gating.
 
-## Project layout
 
-```
-app/
-  schema.py          canonical optimizer/scheduler/loss/network options
-  train_config.py     Train tab settings <-> TOML for both Anima and
-                      SDXL, both directions tested to round-trip exactly
-  toml_writer.py       dependency-free TOML serializer
-  services/
-    booru.py            7 booru-family API clients + tag autocomplete
-    web_images.py         page/URL image discovery
-    downloader.py           concurrent download + local file import
-    imaging.py                magic eraser, crop, save-copy, backups,
-                               and duplicate detection (dHash)
-    captions.py                caption read/write + bulk edits,
-                                including exact per-image tag restore
-                                and instant rename
-    tagger.py                    WD14 ONNX auto-tagger, explicit
-                                  progress-tracked download
-    datasets.py                   folder browsing, image listing,
-                                   tag stats, delete
-    monitor.py                     sample images, checkpoints,
-                                    TensorBoard scalar reading
-    backend_client.py              HTTP client for the training backend
-  routes/               Flask blueprints (collect/edit/caption/train/
-                        files/monitor)
-  static/               CSS + vanilla JS frontend (ActiveDataset shares
-                        the working folder across tabs, theme.js drives
-                        Appearance customization)
-run.py / run.sh / run.bat       start Anima Studio (browser)
-desktop.py                      start Anima Studio in its own window (needs pywebview)
-anima_studio.spec / build_windows.bat   build a standalone Anima Studio.exe
-training_backend/               bundled training engine (see THIRD_PARTY_NOTICES.md)
-setup_backend.sh / .bat         install the bundled backend's own dependencies
-setup_backend.sh / .bat         clone + install the real training backend
-```
 
 ## Notes
 
